@@ -1,5 +1,4 @@
 import { defineComponent } from "vue";
-import { Sign } from "../../Components/Sign";
 import { Avatar } from "../../Components/Avatar";
 import { Job } from "../../Components/Job";
 import { Social } from "../../Components/Social";
@@ -7,249 +6,168 @@ import { Social } from "../../Components/Social";
 import { GithubAlt, Linkedin, Instagram } from "@vicons/fa";
 import { TitleSection } from "../../Components/TitleSection";
 import { InstagramPosts } from "../../Components/InstagramPosts";
+import { locale, tr, type Locale } from "../../i18n";
+import {
+  about,
+  education,
+  experience,
+  hero,
+  offTheClock,
+  skills,
+  studio,
+} from "../../content";
+
+const LOCALES: { value: Locale; label: string }[] = [
+  { value: "en", label: "EN" },
+  { value: "pt", label: "PT" },
+];
 
 export const HomePage = defineComponent({
   name: "HomePage",
   setup() {
     return () => (
-      <div class="text-lg">
-        <section>
-          <div class="grid grid-cols-2">
-            <Sign name="Diego Vieira" role="Software Engineer" />
-            <div>
-              <div class="float-right">
-                <Avatar src="/images/me.jpeg" />
-                <div class="flex mt-5">
-                  <Social link="https://github.com/dieegov" icon={GithubAlt} />
-                  <Social
-                    link="https://www.linkedin.com/in/dieegov"
-                    icon={Linkedin}
-                  />
-                  <Social
-                    link="https://instagram.com/dieegov"
-                    icon={Instagram}
-                  />
-                </div>
-              </div>
+      <div class="text-xl leading-snug">
+        <header class="flex items-center justify-between py-4">
+          <span class="text-lg font-bold tracking-wide text-white/60">
+            diegovieira.dev
+          </span>
+          <div
+            class="flex border border-white/20 text-base font-bold"
+            role="group"
+            aria-label={tr({ en: "Language", pt: "Idioma" })}
+          >
+            {LOCALES.map(({ value, label }) => (
+              <button
+                key={value}
+                type="button"
+                aria-pressed={locale.value === value}
+                onClick={() => (locale.value = value)}
+                class={[
+                  "min-h-11 min-w-11 px-3 transition-colors",
+                  locale.value === value
+                    ? "bg-yellow-400 text-black"
+                    : "text-white/60 hover:text-white",
+                ]}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </header>
+
+        <section class="flex flex-col-reverse gap-8 pb-16 pt-8 sm:flex-row sm:items-end sm:justify-between sm:pb-24 sm:pt-16">
+          <div>
+            <h1 class="text-6xl font-black uppercase tracking-tight sm:text-8xl lg:text-9xl" style={{ lineHeight: "0.85" }}>
+              Diego
+              <br />
+              Vieira
+            </h1>
+            <p class="mt-5 text-2xl font-bold text-yellow-400 sm:text-4xl">
+              {tr(hero.role)}
+            </p>
+            <p class="mt-3 max-w-xl text-white/80">{tr(hero.tagline)}</p>
+            <p class="mt-2 text-base text-white/50">{tr(hero.location)}</p>
+            <div class="-ml-3 mt-4 flex">
+              <Social link="https://github.com/dieegov" icon={GithubAlt} label="GitHub" size={26} />
+              <Social link="https://www.linkedin.com/in/dieegov" icon={Linkedin} label="LinkedIn" size={26} />
+              <Social link="https://instagram.com/dieegov" icon={Instagram} label="Instagram" size={26} />
             </div>
+          </div>
+          <Avatar src="/images/me.jpeg" />
+        </section>
+
+        <section class="grid gap-6 border-t-4 border-yellow-400 pt-8 sm:grid-cols-[14rem_1fr] sm:gap-8">
+          <TitleSection index="01" text={tr({ en: "About", pt: "Sobre" })} />
+          <div class="space-y-4 text-white/80">
+            {about.map((paragraph) => (
+              <p class="max-w-prose">{tr(paragraph)}</p>
+            ))}
+            <ul class="flex flex-wrap gap-2 pt-2" aria-label="Stack">
+              {skills.map((skill) => (
+                <li class="border border-white/15 px-2 py-0.5 text-base text-white/70">
+                  {skill}
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
-        <section class="grid grid-cols-1 sm:w-8/12 gap-8 mt-8">
-          <TitleSection text="My history" />
-
-          <p>
-            I was born on April 24, 1994, in Guarujá, São Paulo, Brazil, and
-            have a deep passion for technology, cinema, photography, and
-            simulation games—particularly those centered on racing and aviation.
-          </p>
-
-          <p>
-            I began exploring software development at the age of 14, starting
-            with PHP and SQL Server. Driven by curiosity, I taught myself CSS
-            and HTML while working on personal projects. At 15, I took my first
-            steps into the professional world, laying the foundation for a
-            career centered on innovation and growth.
-          </p>
-
-          <p>
-            My expertise in web technologies. Over the years, I’ve worked with
-            Angular, Flutter, and Vue.js. Vue.js, TypeScript and .Net, in
-            particular, have become my specialties, allowing me to craft
-            scalable and efficient solutions. Whether leading technology
-            migrations or mentoring teams, I’m dedicated to creating impactful
-            systems that make a difference.
-          </p>
-
-          <p>
-            Beyond work, I find inspiration in photography and cinema. I enjoy
-            capturing moments through my lens.
-          </p>
+        <section class="mt-20">
+          <TitleSection index="02" text={tr({ en: "Experience", pt: "Experiência" })} />
+          <div class="mt-6">
+            {experience.map((company) => (
+              <Job key={company.name} company={company} />
+            ))}
+            <p class="border-t border-white/10 pt-6 text-base text-white/50">
+              {tr(education)}
+            </p>
+          </div>
         </section>
 
-        <div class="grid grid-cols-1 sm:w-8/12 gap-8 mt-8">
-          <TitleSection text="My journey" />
-
-          <Job
-            company="QuintoAndar"
-            role="Software Engineer Leader"
-            companyLogo="https://media.licdn.com/dms/image/v2/C4D0BAQHUCtTCGeeAxQ/company-logo_100_100/company-logo_100_100/0/1655840826255/quintoandar_com_br_logo?e=1741219200&v=beta&t=6WOi-G1k_K-K1sBhY_Ph633nu3SFMyD_de2sCizbGzc"
-            companyLink="https://quintoandar.com.br"
-            startDate={new Date("2022-06-01")}
+        <section class="-mx-4 mt-20 bg-yellow-400 px-4 py-12 text-black sm:mx-0 sm:px-10 sm:py-14">
+          <div class="flex items-baseline gap-3">
+            <span class="text-base font-semibold sm:text-lg">03</span>
+            <h2 class="text-4xl font-black uppercase tracking-tight sm:text-6xl">
+              Blackstudio
+            </h2>
+          </div>
+          <p class="mt-3 max-w-xl">{tr(studio.intro)}</p>
+          <a
+            href={studio.link}
+            target="_blank"
+            rel="noopener"
+            class="mt-2 inline-block font-bold underline underline-offset-4"
           >
-            <p class="py-2">
-              Currently, I lead software engineering teams, fostering effective
-              collaboration between stakeholders and engineers.
-            </p>
-          </Job>
-          <Job
-            company="ATTA"
-            role="Software Engineer Leader"
-            companyLogo="https://media.licdn.com/dms/image/v2/C560BAQFVAbiYr8zlsQ/company-logo_100_100/company-logo_100_100/0/1654721488853/attafranchising_logo?e=1741219200&v=beta&t=aeRqpQHY1XunRVZmu1NRbqMhD_U9tEcmoXjEZ5OQH00"
-            companyLink="https://atta.com.vc"
-            startDate={new Date("2022-06-01")}
-          >
-            <p>
-              Currently working at QuintoAndar, ATTA is now part of QuintoAndar
-              Group after the acquisition, I focus on ensuring a smooth
-              understanding of the platform while facilitating the migration to
-              QuintoAndar's internal technology stack. My role also involves
-              sharing in-depth expertise in real estate credit, including
-              integrations with financial institutions and related processes.
-            </p>
-          </Job>
-          <Job
-            company="ATTA"
-            role="Software Engineer"
-            companyLogo="https://media.licdn.com/dms/image/v2/C560BAQFVAbiYr8zlsQ/company-logo_100_100/company-logo_100_100/0/1654721488853/attafranchising_logo?e=1741219200&v=beta&t=aeRqpQHY1XunRVZmu1NRbqMhD_U9tEcmoXjEZ5OQH00"
-            companyLink="https://atta.com.vc"
-            startDate={new Date("2020-05-01")}
-            endDate={new Date("2022-06-01")}
-          >
-            <p>
-              When I joined Atta, I led the migration from a legacy stack to a
-              modernized architecture, utilizing .NET and Vue.js. I implemented
-              robust CI/CD pipelines, collaborative coding practices, effective
-              pull request guidelines, and thorough code analysis standards.
-              Additionally, I trained and upskilled a team of over 13
-              developers, ensuring their proficiency in the new technologies and
-              fostering a culture of continuous improvement.
-            </p>
-          </Job>
-          <Job
-            company="ProRadis"
-            role="Fullstack Web Developer"
-            companyLogo="https://media.licdn.com/dms/image/v2/C4D0BAQFfZGGIXe-m6w/company-logo_100_100/company-logo_100_100/0/1651067291378/proradis_logo?e=1741219200&v=beta&t=l-hQBZGaNCAQG9MMKG6GMOMg-PocNZAMBMBS_KqfeCw"
-            companyLink="https://www.proradis.com.br"
-            startDate={new Date("2018-05-01")}
-            endDate={new Date("2020-01-01")}
-          >
-            <p class="py-2">
-              Projects and Systems Development for Medical and Dental Clinics
-            </p>
+            blackstudio.dev →
+          </a>
 
-            <p class="py-2">Technologies: PHP, MySQL, Python, C#, Javascript</p>
+          <ul class="mt-8 grid gap-4 sm:grid-cols-3">
+            {studio.games.map((game) => (
+              <li key={game.name}>
+                <a
+                  href={game.link}
+                  target="_blank"
+                  rel="noopener"
+                  class="flex h-full flex-col bg-black p-5 text-white transition-transform hover:-translate-y-1"
+                >
+                  <div class="flex h-20 items-center">
+                    <img
+                      src={game.logo}
+                      alt={game.name}
+                      loading="lazy"
+                      class="max-h-full max-w-[70%] object-contain"
+                    />
+                  </div>
+                  <h3 class="mt-4 text-2xl font-bold">{game.name}</h3>
+                  <p class="mt-1 text-lg text-white/70">{tr(game.body)}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
 
-            <p class="py-2">
-              Featured Project: Development of the telerradiologia.co system
-              using .Net Core, VUE.JS and MySQL
-            </p>
+        <section class="mt-20 grid gap-6 sm:grid-cols-[14rem_1fr] sm:gap-8">
+          <TitleSection index="04" text={tr({ en: "Off hours", pt: "Fora do código" })} />
+          <div class="space-y-4 text-white/80">
+            {offTheClock.map((paragraph) => (
+              <p class="max-w-prose">{tr(paragraph)}</p>
+            ))}
+          </div>
+        </section>
 
-            <h4 class="font-bold">Main Activities:</h4>
-
-            <ul class="list-disc list-inside">
-              <li>Analysis and Development</li>
-              <li>Requirements Gathering</li>
-              <li>UI and UX Interface Design</li>
-              <li>Data Modeling</li>
-              <li>Microservices</li>
-              <li>Integrations</li>
-            </ul>
-          </Job>
-
-          <Job
-            company="epico.digital"
-            role="Fullstack Web Developer"
-            startDate={new Date("2017-10-01")}
-            endDate={new Date("2018-05-01")}
-          >
-            <p class="py-2">
-              Epico is a digital studio focused on developing high-quality
-              solutions for advertising agencies and major brands.
-            </p>
-
-            <p class="py-2">Development with Node.JS, Angular and Oracle.</p>
-
-            <p class="py-2">
-              <h4 class="font-bold">Main activities:</h4>
-
-              <ul class="list-disc list-inside">
-                <li>Bug fixes</li>
-                <li>New feature development</li>
-                <li>Data development and modeling</li>
-                <li>Interface development</li>
-                <li>Integrations</li>
-              </ul>
-            </p>
-          </Job>
-          <Job
-            company="Universidade Santa Cecília"
-            companyLogo="https://media.licdn.com/dms/image/v2/C4D0BAQEikoM13rO6tA/company-logo_100_100/company-logo_100_100/0/1641390371374/universidade_santa_ceclia_logo?e=1741219200&v=beta&t=5bOb--WvWjq-DZIBDs59oL5qV4YqSOwYmLuV5spXyrk"
-            companyLink="https://www.unisanta.br/"
-            role="Fullstack Developer"
-            startDate={new Date("2009-07-01")}
-            endDate={new Date("2017-09-01")}
-          >
-            <p class="py-2">
-              Santa Cecilia University is a Brazilian higher education
-              institution located in the city of Santos. It is also part of the
-              Santa Cecilia Educational Complex, which includes Santa Cecilia
-              College, Santa Cecilia TV, and Santa Cecilia FM.
-            </p>
-
-            <p class="py-2">
-              Development of institutional systems using technologies such as C#
-              and Angular.
-            </p>
-
-            <p class="py-2">
-              <h4 class="font-bold">Main activities:</h4>
-              <ul class="list-disc list-inside">
-                <li>
-                  Development of new tools and applications for sectors and
-                  third parties of the institution
-                </li>
-                <li>Analysis and computerization of processes</li>
-                <li>Restructuring of the Institutional Portal</li>
-                <li>Restructuring of the Events Portals (COBRIC)</li>
-                <li>
-                  Restructuring of the University Games System (UNISANTA Games)
-                </li>
-                <li>Project management and monitoring</li>
-                <li>
-                  Integration with Itaú Bank (Automation of invoice processing)
-                </li>
-                <li>Integration with TOTVS ERP (RM Sistemas)</li>
-                <li>Development of the system for NPH Unisanta</li>
-                <li>Integrations with Wordpress</li>
-              </ul>
-            </p>
-          </Job>
+        <div class="mt-8">
+          <InstagramPosts />
         </div>
 
-        <section class="mt-6">
-          <TitleSection text="Curiosities about me" />
-
-          <p class="py-2">
-            I've been into web development since I was 14. My first project was
-            Gamenix, a system that connected multiple games to a single account.
-            Soon after, I contributed to 2moons, an open-source OGame clone,
-            where I created mods and hotfixes
-          </p>
-
-          <p class="py-2">
-            I then built my own game, Orbitwars, spending countless hours
-            creating unique content and features to set it apart from private
-            servers. It was a small success, helping me improve my skills in
-            JavaScript, PHP,, MySQL CSS, and jQuery. Orbitwars had a peak of 52
-            online players and over 1000 accounts before it ended in 2012.
-          </p>
-
-          <p class="py-2">
-            Outside of tech, I'm a certified diver, finding balance and
-            inspiration beneath the waves. Technology is my passion, and I’m
-            always excited to push my limits and learn more.
-          </p>
-
-          <p class="py-2">Some pictures I loved to taked</p>
-
-          <InstagramPosts />
-        </section>
-
-        <footer class="mt-14 text-center">
-          Built with Vue.JS -
-          <a href="https://github.com/dieegov/about-me" target="_blank">
-            Fork in Github
+        <footer class="mt-16 flex flex-col gap-2 border-t border-white/10 py-8 text-base text-white/50 sm:flex-row sm:justify-between">
+          <span>© {new Date().getFullYear()} Diego Vieira</span>
+          <a
+            href="https://github.com/dieegov/about-me"
+            target="_blank"
+            rel="noopener"
+            class="hover:text-yellow-400"
+          >
+            {tr({ en: "Built with Vue · source on GitHub", pt: "Feito com Vue · código no GitHub" })}
           </a>
         </footer>
       </div>

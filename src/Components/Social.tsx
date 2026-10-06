@@ -21,7 +21,12 @@ export const Social = defineComponent({
 
     color: {
       type: String,
-      default: "white",
+      default: "currentColor",
+    },
+
+    label: {
+      type: String,
+      required: true,
     },
   },
 
@@ -29,7 +34,13 @@ export const Social = defineComponent({
     var iconComponent = this.icon;
 
     return (
-      <a href={this.link} target="_blank" class="text-2xl mr-4">
+      <a
+        href={this.link}
+        target="_blank"
+        rel="noopener"
+        aria-label={this.label}
+        class="inline-flex h-11 w-11 items-center justify-center text-white/70 transition-colors hover:text-yellow-400"
+      >
         <Icon size={this.size} color={this.color}>
           <iconComponent />
         </Icon>

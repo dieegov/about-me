@@ -24,10 +24,20 @@ export const InstagramPosts = defineComponent({
 
   render() {
     return (
-      <div class="grid grid-cols-3 gap-4 align-middle">
+      <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-4">
         {this.posts.map(this.mountObject).map((post) => (
-          <a href={post.url} target="_blank">
-            <img src={post.image} alt={post.url} />
+          <a
+            href={post.url}
+            target="_blank"
+            rel="noopener"
+            class="group block overflow-hidden bg-white/5"
+          >
+            <img
+              src={post.image}
+              alt="Instagram"
+              loading="lazy"
+              class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
           </a>
         ))}
       </div>

@@ -13,12 +13,13 @@ export const Avatar = defineComponent({
 
   render() {
     return (
-      <div class="sm:w-96 sm:h-96 h-32 w-32 relative z-10 before:absolute before:top-2 before:left-2 before:w-full before:h-full before:bg-yellow-500">
+      <div class="relative aspect-square w-28 shrink-0 before:absolute before:left-2 before:top-2 before:h-full before:w-full before:bg-yellow-400 sm:w-64 sm:before:left-3 sm:before:top-3 lg:w-80">
         <img
           src={this.src}
-          alt="user profile image"
-          class="absolute z-10 inset-0 w-full h-full object-cover"
-          loading="lazy"
+          alt="Diego Vieira"
+          class="absolute inset-0 h-full w-full object-cover grayscale"
+          width="320"
+          height="320"
         />
       </div>
     );

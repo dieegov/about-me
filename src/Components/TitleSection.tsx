@@ -7,11 +7,19 @@ export const TitleSection = defineComponent({
       type: String,
       required: true,
     },
+
+    index: {
+      type: String,
+      required: true,
+    },
   },
 
   render() {
     return (
-      <h2 class="sm:text-4xl text-2xl border-b-4 border-b-yellow-500">
+      <h2 class="flex items-baseline gap-3 text-3xl font-bold uppercase tracking-tight sm:text-5xl">
+        <span class="text-base font-semibold text-yellow-400 sm:text-lg">
+          {this.index}
+        </span>
         {this.text}
       </h2>
     );

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 520" role="img" aria-labelledby="title desc">
+  <title id="title">OrbitWars</title>
+  <desc id="desc">OrbitWars full logo with orbital fleet trails and planetary horizon.</desc>
+  <defs>
+    <linearGradient id="planetGlow" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#f5f7f8"/>
+      <stop offset=".22" stop-color="#00eaff"/>
+      <stop offset=".72" stop-color="#0b4f86"/>
+      <stop offset="1" stop-color="#020a18"/>
+    </linearGradient>
+    <linearGradient id="wordFill" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".72" stop-color="#f5f7f8"/>
+      <stop offset="1" stop-color="#a9f7ff"/>
+    </linearGradient>
+    <filter id="softGlow" x="-15%" y="-50%" width="130%" height="200%">
+      <feDropShadow dx="0" dy="0" stdDeviation="1.5" flood-color="#00eaff" flood-opacity=".18"/>
+    </filter>
+    <g id="ship">
+      <path fill="#f5f7f8" d="M0-10l34 10L0 10l8-10z"/>
+      <path fill="#020a18" opacity=".7" d="M6-4l14 4L6 4l3-4z"/>
+    </g>
+  </defs>
+
+  <g fill="#f5f7f8" opacity=".75">
+    <circle cx="262" cy="128" r="3"/>
+    <circle cx="376" cy="88" r="2.5"/>
+    <circle cx="1320" cy="106" r="3"/>
+    <circle cx="1418" cy="176" r="2.5"/>
+    <circle cx="1244" cy="64" r="2"/>
+    <path d="M1180 116l6 14 14 6-14 6-6 14-6-14-14-6 14-6z"/>
+    <path d="M332 188l5 12 12 5-12 5-5 12-5-12-12-5 12-5z"/>
+  </g>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M238 356c250-220 735-274 1160-142" stroke="#f5f7f8" stroke-width="9" opacity=".9"/>
+    <path d="M172 252c300 17 676 116 1278 162" stroke="#00eaff" stroke-width="8" opacity=".95"/>
+    <path d="M332 426c316-75 604-75 974-230" stroke="#ff7a18" stroke-width="7" opacity=".9"/>
+  </g>
+
+  <g filter="url(#softGlow)">
+    <text x="840" y="306" text-anchor="middle" fill="url(#wordFill)" stroke="#f5f7f8" stroke-width="8" paint-order="stroke fill" font-family="Orbitron, Rajdhani, Arial Narrow, sans-serif" font-size="166" font-weight="900" letter-spacing="1">ORBITWARS</text>
+  </g>
+
+  <path fill="#020a18" opacity=".94" d="M180 438c198-76 404-110 618-102 234 9 436 62 702 36v148H180z"/>
+  <path fill="url(#planetGlow)" d="M104 468c228-104 462-142 704-112 224 28 452 72 768 30v134H104z"/>
+  <path fill="none" stroke="#f5f7f8" stroke-width="7" stroke-linecap="round" d="M98 458c230-106 468-144 712-114 225 28 454 72 774 28"/>
+  <path fill="none" stroke="#00eaff" stroke-width="7" stroke-linecap="round" opacity=".9" d="M142 494c236-82 464-104 684-68 204 34 424 52 706 14"/>
+
+  <use href="#ship" x="1432" y="226" transform="rotate(18 1432 226)"/>
+  <use href="#ship" x="1492" y="418" transform="rotate(6 1492 418)"/>
+  <use href="#ship" x="1348" y="178" transform="rotate(-24 1348 178)"/>
+
+  <g fill="#00eaff">
+    <rect x="498" y="342" width="96" height="10"/>
+    <rect x="616" y="342" width="44" height="10" opacity=".72"/>
+    <rect x="1018" y="342" width="196" height="10"/>
+    <rect x="1238" y="342" width="92" height="10" opacity=".72"/>
+  </g>
+</svg>
