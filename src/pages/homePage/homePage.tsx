@@ -1,5 +1,6 @@
 import { defineComponent } from "vue";
 import { Avatar } from "../../Components/Avatar";
+import photo from "../../assets/me.jpeg";
 import { Job } from "../../Components/Job";
 import { Social } from "../../Components/Social";
 
@@ -73,7 +74,7 @@ export const HomePage = defineComponent({
               <Social link="https://instagram.com/dieegov" icon={Instagram} label="Instagram" size={26} />
             </div>
           </div>
-          <Avatar src="/images/me.jpeg" />
+          <Avatar src={photo} />
         </section>
 
         <section class="grid gap-6 border-t-4 border-yellow-400 pt-8 sm:grid-cols-[14rem_1fr] sm:gap-8">
