@@ -2,24 +2,80 @@ import { defineComponent } from "vue";
 import { Sign } from "../../Components/Sign";
 import { Avatar } from "../../Components/Avatar";
 import { Job } from "../../Components/Job";
+import { Social } from "../../Components/Social";
+
+import { GithubAlt, Linkedin, Instagram } from "@vicons/fa";
+import { TitleSection } from "../../Components/TitleSection";
+import { InstagramPosts } from "../../Components/InstagramPosts";
 
 export const HomePage = defineComponent({
   name: "HomePage",
   setup() {
     return () => (
-      <section>
-        <div class="grid grid-cols-2 gap-4">
-          <Sign name="Diego Vieira" role="Software Engineer" />
-          <Avatar src="/images/me.jpeg" />
-        </div>
+      <div class="text-lg">
+        <section>
+          <div class="grid grid-cols-2">
+            <Sign name="Diego Vieira" role="Software Engineer" />
+            <div>
+              <div class="float-right">
+                <Avatar src="/images/me.jpeg" />
+                <div class="flex mt-5">
+                  <Social link="https://github.com/dieegov" icon={GithubAlt} />
+                  <Social
+                    link="https://www.linkedin.com/in/dieegov"
+                    icon={Linkedin}
+                  />
+                  <Social
+                    link="https://instagram.com/dieegov"
+                    icon={Instagram}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="grid grid-cols-1 sm:w-8/12 gap-8 mt-8">
+          <TitleSection text="My history" />
+
+          <p>
+            I was born on April 24, 1994, in Guarujá, São Paulo, Brazil, and
+            have a deep passion for technology, cinema, photography, and
+            simulation games—particularly those centered on racing and aviation.
+          </p>
+
+          <p>
+            I began exploring software development at the age of 14, starting
+            with PHP and SQL Server. Driven by curiosity, I taught myself CSS
+            and HTML while working on personal projects. At 15, I took my first
+            steps into the professional world, laying the foundation for a
+            career centered on innovation and growth.
+          </p>
+
+          <p>
+            My expertise in web technologies. Over the years, I’ve worked with
+            Angular, Flutter, and Vue.js. Vue.js, TypeScript and .Net, in
+            particular, have become my specialties, allowing me to craft
+            scalable and efficient solutions. Whether leading technology
+            migrations or mentoring teams, I’m dedicated to creating impactful
+            systems that make a difference.
+          </p>
+
+          <p>
+            Beyond work, I find inspiration in photography and cinema. I enjoy
+            capturing moments through my lens.
+          </p>
+        </section>
 
         <div class="grid grid-cols-1 sm:w-8/12 gap-8 mt-8">
+          <TitleSection text="My journey" />
+
           <Job
             company="QuintoAndar"
             role="Software Engineer Leader"
             companyLogo="https://media.licdn.com/dms/image/v2/C4D0BAQHUCtTCGeeAxQ/company-logo_100_100/company-logo_100_100/0/1655840826255/quintoandar_com_br_logo?e=1741219200&v=beta&t=6WOi-G1k_K-K1sBhY_Ph633nu3SFMyD_de2sCizbGzc"
             companyLink="https://quintoandar.com.br"
-            startDate={new Date("2022-6-1")}
+            startDate={new Date("2022-06-01")}
           >
             <p class="py-2">
               Currently, I lead software engineering teams, fostering effective
@@ -31,7 +87,7 @@ export const HomePage = defineComponent({
             role="Software Engineer Leader"
             companyLogo="https://media.licdn.com/dms/image/v2/C560BAQFVAbiYr8zlsQ/company-logo_100_100/company-logo_100_100/0/1654721488853/attafranchising_logo?e=1741219200&v=beta&t=aeRqpQHY1XunRVZmu1NRbqMhD_U9tEcmoXjEZ5OQH00"
             companyLink="https://atta.com.vc"
-            startDate={new Date("2022-6-1")}
+            startDate={new Date("2022-06-01")}
           >
             <p>
               Currently working at QuintoAndar, ATTA is now part of QuintoAndar
@@ -47,8 +103,8 @@ export const HomePage = defineComponent({
             role="Software Engineer"
             companyLogo="https://media.licdn.com/dms/image/v2/C560BAQFVAbiYr8zlsQ/company-logo_100_100/company-logo_100_100/0/1654721488853/attafranchising_logo?e=1741219200&v=beta&t=aeRqpQHY1XunRVZmu1NRbqMhD_U9tEcmoXjEZ5OQH00"
             companyLink="https://atta.com.vc"
-            startDate={new Date("2020-5-1")}
-            endDate={new Date("2022-6-1")}
+            startDate={new Date("2020-05-01")}
+            endDate={new Date("2022-06-01")}
           >
             <p>
               When I joined Atta, I led the migration from a legacy stack to a
@@ -65,8 +121,8 @@ export const HomePage = defineComponent({
             role="Fullstack Web Developer"
             companyLogo="https://media.licdn.com/dms/image/v2/C4D0BAQFfZGGIXe-m6w/company-logo_100_100/company-logo_100_100/0/1651067291378/proradis_logo?e=1741219200&v=beta&t=l-hQBZGaNCAQG9MMKG6GMOMg-PocNZAMBMBS_KqfeCw"
             companyLink="https://www.proradis.com.br"
-            startDate={new Date("2018-5-1")}
-            endDate={new Date("2020-1-1")}
+            startDate={new Date("2018-05-01")}
+            endDate={new Date("2020-01-01")}
           >
             <p class="py-2">
               Projects and Systems Development for Medical and Dental Clinics
@@ -94,8 +150,8 @@ export const HomePage = defineComponent({
           <Job
             company="epico.digital"
             role="Fullstack Web Developer"
-            startDate={new Date("2017-10-1")}
-            endDate={new Date("2018-5-1")}
+            startDate={new Date("2017-10-01")}
+            endDate={new Date("2018-05-01")}
           >
             <p class="py-2">
               Epico is a digital studio focused on developing high-quality
@@ -121,8 +177,8 @@ export const HomePage = defineComponent({
             companyLogo="https://media.licdn.com/dms/image/v2/C4D0BAQEikoM13rO6tA/company-logo_100_100/company-logo_100_100/0/1641390371374/universidade_santa_ceclia_logo?e=1741219200&v=beta&t=5bOb--WvWjq-DZIBDs59oL5qV4YqSOwYmLuV5spXyrk"
             companyLink="https://www.unisanta.br/"
             role="Fullstack Developer"
-            startDate={new Date("2009-7-1")}
-            endDate={new Date("2017-9-1")}
+            startDate={new Date("2009-07-01")}
+            endDate={new Date("2017-09-01")}
           >
             <p class="py-2">
               Santa Cecilia University is a Brazilian higher education
@@ -160,7 +216,43 @@ export const HomePage = defineComponent({
             </p>
           </Job>
         </div>
-      </section>
+
+        <section class="mt-6">
+          <TitleSection text="Curiosities about me" />
+
+          <p class="py-2">
+            I've been into web development since I was 14. My first project was
+            Gamenix, a system that connected multiple games to a single account.
+            Soon after, I contributed to 2moons, an open-source OGame clone,
+            where I created mods and hotfixes
+          </p>
+
+          <p class="py-2">
+            I then built my own game, Orbitwars, spending countless hours
+            creating unique content and features to set it apart from private
+            servers. It was a small success, helping me improve my skills in
+            JavaScript, PHP,, MySQL CSS, and jQuery. Orbitwars had a peak of 52
+            online players and over 1000 accounts before it ended in 2012.
+          </p>
+
+          <p class="py-2">
+            Outside of tech, I'm a certified diver, finding balance and
+            inspiration beneath the waves. Technology is my passion, and I’m
+            always excited to push my limits and learn more.
+          </p>
+
+          <p class="py-2">Some pictures I loved to taked</p>
+
+          <InstagramPosts />
+        </section>
+
+        <footer class="mt-14 text-center">
+          Built with Vue.JS -
+          <a href="https://github.com/dieegov/about-me" target="_blank">
+            Fork in Github
+          </a>
+        </footer>
+      </div>
     );
   },
 });

@@ -22,9 +22,9 @@ export const Sign = defineComponent({
 
   render() {
     return (
-      <div class="flex-1">
-        <h1 class="sm:text-9xl text-2xl font-bold mb-4">{this.signName}</h1>
-        <h2 class="sm:text-6xl text-1xl font-bold mb-4">{this.role}</h2>
+      <div class="font-bold">
+        <h1 class="sm:text-9xl text-4xl">{this.signName}</h1>
+        <h2 class="sm:text-6xl text-2xl">{this.role}</h2>
       </div>
     );
   },

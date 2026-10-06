@@ -5,7 +5,7 @@ export const App = defineComponent({
   name: "App",
   render() {
     return (
-      <div class="container mx-auto px-4 ">
+      <div class="container mx-auto">
         <RouterView />
       </div>
     );

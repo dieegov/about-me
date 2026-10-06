@@ -51,7 +51,7 @@ export const Job = defineComponent({
     formatDateString(date: Date) {
       return date.toLocaleDateString("en-US", {
         year: "numeric",
-        month: "long",
+        month: "short",
       });
     },
 
@@ -86,19 +86,22 @@ export const Job = defineComponent({
     return (
       <section class="tracking-normal">
         <div class="flex">
-          <img
-            src={this.companyLogo}
-            alt="company logo"
-            class="w-12 h-12 mt-2 mr-4"
-          />
+          <div class="flex-none h-12 float-right w-12 relative z-10 before:absolute before:top-1 before:left-1 before:w-full before:h-full before:bg-yellow-500 mt-2 mr-4">
+            <img
+              src={this.companyLogo}
+              alt="company logo"
+              class="absolute z-10 inset-0 w-12 h-12 object-cover"
+              loading="lazy"
+            />
+          </div>
           <div>
             <h3 class="text-2xl font-bold">
               <a href={this.companyLink} target="_blank">
                 {this.company}
               </a>
               <small class="text-lg block font-bold">
-                {this.role} |
-                <span class="text-gray-400"> {this.calculatedPeriod}</span>
+                {this.role}
+                <span class="text-gray-400 block">{this.calculatedPeriod}</span>
               </small>
             </h3>
 
