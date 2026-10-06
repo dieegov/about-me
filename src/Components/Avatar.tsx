@@ -17,7 +17,7 @@ export const Avatar = defineComponent({
         <img
           src={this.src}
           alt="Diego Vieira"
-          class="absolute inset-0 h-full w-full object-cover grayscale"
+          class="absolute inset-0 h-full w-full object-cover"
           width="320"
           height="320"
         />
